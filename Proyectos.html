@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casos de Éxito | Proyectos de Gestión Documental — EGS</title>
+  <meta name="description" content="Conozca los proyectos de alto nivel que EGS ha ejecutado para la Contraloría General y el Acueducto de Bogotá. Resultados y satisfacción garantizada.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* CASO PRINCIPAL */
+    .case-block {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--sombra-hover);
+      margin-bottom: 48px;
+    }
+    .case-block.reverse { direction: rtl; }
+    .case-block.reverse > * { direction: ltr; }
+    .case-sidebar {
+      background: linear-gradient(180deg, var(--azul-profundo) 0%, var(--azul-medio) 100%);
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .case-sidebar .case-client-icon {
+      width: 72px; height: 72px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--blanco);
+      margin-bottom: 20px;
+    }
+    .case-sidebar h3 { color: var(--blanco); font-size: 1.2rem; margin-bottom: 8px; }
+    .case-sidebar .case-type { color: rgba(255,255,255,0.6); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .case-stat-mini {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+    .case-stat-mini .stat-val {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--cyan-acento);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .case-stat-mini .stat-desc { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
+
+    .case-content {
+      background: var(--blanco);
+      padding: 48px 44px;
+    }
+    .case-content .case-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--cyan-claro);
+      color: var(--cyan-acento);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .case-content h2 { color: var(--azul-profundo); margin-bottom: 14px; font-size: 1.5rem; }
+    .case-content .case-desc { font-size: 0.95rem; color: var(--gris-oscuro); margin-bottom: 28px; }
+
+    .logros-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .logro-item {
+      background: var(--gris-claro);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .logro-val {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--azul-profundo);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .logro-desc { font-size: 0.75rem; color: var(--gris-medio); font-weight: 500; }
+
+    .services-applied {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .services-applied .badge { font-size: 0.75rem; }
+
+    .case-testimonial {
+      background: var(--gris-claro);
+      border-left: 3px solid var(--cyan-acento);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 20px;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--gris-oscuro);
+      margin-top: 8px;
+    }
+    .case-testimonial .t-author {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      color: var(--azul-profundo);
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+
+    /* CONTRATOS (EAAB) */
+    .contrato-item {
+      display: flex;
+      gap: 16px;
+      padding: 18px 20px;
+      background: var(--gris-claro);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(13,43,94,0.06);
+    }
+    .contrato-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--cyan-acento);
+      min-width: 28px;
+    }
+    .contrato-item h4 { color: var(--azul-profundo); margin-bottom: 4px; font-size: 0.95rem; }
+    .contrato-item p  { font-size: 0.84rem; color: var(--gris-oscuro); margin: 0; }
+
+    /* OTROS CLIENTES */
+    .mini-client {
+      background: var(--blanco);
+      border-radius: var(--radio-card);
+      box-shadow: var(--sombra-card);
+      padding: 28px 24px;
+      border: 1px solid rgba(13,43,94,0.06);
+      text-align: center;
+      transition: var(--transicion);
+    }
+    .mini-client:hover { transform: translateY(-3px); box-shadow: var(--sombra-hover); }
+    .mini-client-icon {
+      width: 52px; height: 52px;
+      background: var(--gris-claro);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--azul-medio);
+      margin: 0 auto 14px;
+    }
+    .mini-client h4 { color: var(--azul-profundo); font-size: 0.95rem; margin-bottom: 6px; }
+    .mini-client p  { font-size: 0.82rem; color: var(--gris-medio); margin: 0; }
+
+    /* GALERÍA */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--gris-claro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 1px solid #E0E7F0;
+      cursor: pointer;
+      transition: var(--transicion);
+    }
+    .gallery-item:hover { transform: scale(1.03); box-shadow: var(--sombra-hover); }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--gris-medio);
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 16px;
+    }
+    .gallery-placeholder i { font-size: 2rem; color: #C4CDD6; }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13,43,94,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-overlay i { color: var(--blanco); font-size: 1.5rem; }
+
+    @media (max-width: 1024px) {
+      .case-block { grid-template-columns: 1fr; }
+      .case-block.reverse { direction: ltr; }
+      .logros-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .case-content { padding: 32px 24px; }
+      .case-sidebar  { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">EGS</div>
+        <div class="logo-text">
+          <span class="logo-name">EGS Soluciones Integrales</span>
+          <span class="logo-sub">Gestión Documental</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="acerca-de.html">Acerca de</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="contacto.html" class="nav-cta">Contáctanos</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======== HERO ======== -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Ruta">
+          <a href="index.html">Inicio</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>Proyectos</span>
+        </nav>
+        <span class="section-label">Casos de éxito</span>
+        <h1>Proyectos que respaldan<br>nuestra experiencia</h1>
+        <p>Hemos ejecutado proyectos de alto nivel para entidades de referencia nacional, demostrando capacidad técnica, cumplimiento y resultados medibles.</p>
+      </div>
+    </section>
+
+    <!-- ======== CASOS DE ÉXITO ======== -->
+    <section>
+      <div class="container">
+
+        <!-- CASO 1: CONTRALORÍA -->
+        <div class="case-block reveal">
+          <div class="case-sidebar">
+            <div>
+              <div class="case-client-icon"><i class="fas fa-landmark"></i></div>
+              <h3>Contraloría General de la República</h3>
+              <div class="case-type">Entidad pública nacional · Bogotá</div>
+            </div>
+            <div>
+              <div class="case-stat-mini">
+                <div class="stat-val">+27M</div>
+                <div class="stat-desc">Imágenes digitalizadas</div>
+              </div>
+              <div class="case-stat-mini" style="margin-top:12px;">
+                <div class="stat-val">100%</div>
+                <div class="stat-desc">Cumplimiento normativo AGN</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-content">
+            <span class="case-tag"><i class="fas fa-trophy"></i> Proyecto insignia</span>
+            <h2>Organización, digitalización y recuperación documental a gran escala</h2>
+            <p class="case-desc">EGS ejecutó para la Contraloría General de la República un proyecto integral que abarcó la organización de sus fondos acumulados históricos, la digitalización masiva de documentos y la recuperación de información almacenada en medios magnéticos obsoletos, asegurando la trazabilidad y acceso oportuno al patrimonio documental de la institución.</p>
+
+            <div class="logros-grid">
+              <div class="logro-item">
+                <div class="logro-val">+27M</div>
+                <div class="logro-desc">Imágenes digitalizadas</div>
+              </div>
+              <div class="logro-item">
+                <div class="logro-val">Fondos<br>acumulados</div>
+                <div class="logro-desc">Organización total</div>
+              </div>
+              <div class="logro-item">
+                <div class="logro-val">USB·CD<br>VHS</div>
+                <div class="logro-desc">Medios recuperados</div>
+              </div>
+            </div>
+
+            <div class="services-applied">
+              <span class="badge badge-azul">Organización de archivos</span>
+              <span class="badge badge-azul">Digitalización masiva</span>
+              <span class="badge badge-azul">Lectura de medios magnéticos</span>
+              <span class="badge badge-cyan">Instrumentos archivísticos</span>
+            </div>
+
+            <blockquote class="case-testimonial">
+              "EGS demostró un alto nivel de experticia y compromiso en la organización y digitalización de nuestros fondos acumulados. Los resultados superaron nuestras expectativas tanto en calidad como en cumplimiento de los plazos establecidos."
+              <span class="t-author">— Contraloría General de la República</span>
+            </blockquote>
+          </div>
+        </div>
+
+        <!-- CASO 2: ACUEDUCTO DE BOGOTÁ -->
+        <div class="case-block reverse reveal">
+          <div class="case-sidebar" style="background: linear-gradient(180deg, #0a3d6e 0%, var(--azul-profundo) 100%);">
+            <div>
+              <div class="case-client-icon"><i class="fas fa-droplet"></i></div>
+              <h3>Empresa de Acueducto y Alcantarillado de Bogotá</h3>
+              <div class="case-type">EAAB — Empresa de servicios públicos</div>
+            </div>
+            <div>
+              <div class="case-stat-mini">
+                <div class="stat-val">+96K</div>
+                <div class="stat-desc">Cajas en custodia</div>
+              </div>
+              <div class="case-stat-mini" style="margin-top:12px;">
+                <div class="stat-val">3</div>
+                <div class="stat-desc">Contratos ejecutados</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-content">
+            <span class="case-tag"><i class="fas fa-star"></i> Relación de largo plazo</span>
+            <h2>Custodia, administración y gestión de historias laborales</h2>
+            <p class="case-desc">La EAAB ha confiado en EGS la gestión integral de su patrimonio documental a través de tres contratos sucesivos que demuestran la solidez de la relación y la calidad del servicio prestado. EGS administra hoy más de 96.000 cajas de archivo físico para esta empresa.</p>
+
+            <div class="contrato-item">
+              <div class="contrato-num">1</div>
+              <div>
+                <h4>Custodia de archivos físicos</h4>
+                <p>Almacenamiento y administración de más de 96.000 cajas de archivo en instalaciones seguras y especializadas, con control de inventario y préstamo documental.</p>
+              </div>
+            </div>
+            <div class="contrato-item">
+              <div class="contrato-num">2</div>
+              <div>
+                <h4>Administración documental activa</h4>
+                <p>Gestión del ciclo de vida de los documentos activos de la empresa, garantizando el acceso oportuno y la trazabilidad en cada operación.</p>
+              </div>
+            </div>
+            <div class="contrato-item" style="margin-bottom:20px;">
+              <div class="contrato-num">3</div>
+              <div>
+                <h4>Gestión de historias laborales</h4>
+                <p>Organización, digitalización y custodia del archivo de historias laborales, con acceso controlado para el área de gestión humana de la organización.</p>
+              </div>
+            </div>
+
+            <div class="services-applied">
+              <span class="badge badge-azul">Custodia documental</span>
+              <span class="badge badge-azul">Administración de archivos</span>
+              <span class="badge badge-cyan">Historias laborales</span>
+              <span class="badge badge-azul">Logística documental</span>
+            </div>
+
+            <blockquote class="case-testimonial">
+              "La gestión de EGS en la custodia y administración de nuestros archivos ha sido ejemplar. Su capacidad para manejar grandes volúmenes de documentación con precisión y seguridad es un activo invaluable para nuestra organización."
+              <span class="t-author">— Empresa de Acueducto y Alcantarillado de Bogotá (EAAB)</span>
+            </blockquote>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======== OTROS CLIENTES ======== -->
+    <section class="bg-gris">
+      <div class="container">
+        <div class="text-center mb-40">
+          <span class="section-label">También hemos trabajado con</span>
+          <h2 class="section-title">Otros clientes destacados</h2>
+        </div>
+        <div class="grid-3">
+          <div class="mini-client reveal">
+            <div class="mini-client-icon"><i class="fas fa-building-columns"></i></div>
+            <h4>Alcaldía de Envigado</h4>
+            <p>Organización y gestión documental del archivo municipal. Antioquia.</p>
+          </div>
+          <div class="mini-client reveal reveal-delay-1">
+            <div class="mini-client-icon"><i class="fas fa-building-columns"></i></div>
+            <h4>Alcaldía de La Estrella</h4>
+            <p>Implementación de instrumentos archivísticos y digitalización. Antioquia.</p>
+          </div>
+          <div class="mini-client reveal reveal-delay-2">
+            <div class="mini-client-icon"><i class="fas fa-building-columns"></i></div>
+            <h4>Alcaldía de Segovia</h4>
+            <p>Custodia y organización de fondos acumulados municipales. Antioquia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== GALERÍA ======== -->
+    <section id="galeria">
+      <div class="container">
+        <div class="text-center mb-40">
+          <span class="section-label">Galería de proyectos</span>
+          <h2 class="section-title">Nuestro trabajo en imágenes</h2>
+          <p class="section-intro" style="margin:0 auto;">Evidencia visual de los procesos de digitalización, custodia y organización documental que ejecutamos para nuestros clientes.</p>
+        </div>
+        <div class="gallery-grid">
+          <!-- Slots de galería — reemplazar src con imágenes reales del brochure -->
+          <div class="gallery-item reveal" data-caption="Proceso de digitalización masiva de documentos">
+            <div class="gallery-placeholder">
+              <i class="fas fa-scanner-image"></i>
+              <span>Digitalización de documentos</span>
+            </div>
+            <div class="gallery-overlay"><i class="fas fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item reveal reveal-delay-1" data-caption="Organización de fondos acumulados">
+            <div class="gallery-placeholder">
+              <i class="fas fa-boxes-stacked"></i>
+              <span>Organización de archivos</span>
+            </div>
+            <div class="gallery-overlay"><i class="fas fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item reveal reveal-delay-2" data-caption="Bodega de custodia documental">
+            <div class="gallery-placeholder">
+              <i class="fas fa-warehouse"></i>
+              <span>Custodia en bodega</span>
+            </div>
+            <div class="gallery-overlay"><i class="fas fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item reveal reveal-delay-3" data-caption="Lectura de medios magnéticos">
+            <div class="gallery-placeholder">
+              <i class="fas fa-compact-disc"></i>
+              <span>Medios magnéticos</span>
+            </div>
+            <div class="gallery-overlay"><i class="fas fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item reveal" data-caption="Nebula Vault — Bodega virtual">
+            <div class="gallery-placeholder">
+              <i class="fas fa-cloud-arrow-up"></i>
+              <span>Nebula Vault</span>
+            </div>
+            <div class="gallery-overlay"><i class="fas fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item reveal reveal-delay-1" data-caption="Microfilmación de documentos históricos">
+            <div class="gallery-placeholder">
+              <i class="fas fa-film"></i>
+              <span>Microfilmación</span>
+            </div>
+            <div class="gallery-overlay"><i class="fas fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item reveal reveal-delay-2" data-caption="Logística documental — Traslado seguro">
+            <div class="gallery-placeholder">
+              <i class="fas fa-truck-moving"></i>
+              <span>Logística documental</span>
+            </div>
+            <div class="gallery-overlay"><i class="fas fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item reveal reveal-delay-3" data-caption="Equipo profesional EGS en acción">
+            <div class="gallery-placeholder">
+              <i class="fas fa-people-group"></i>
+              <span>Equipo EGS</span>
+            </div>
+            <div class="gallery-overlay"><i class="fas fa-magnifying-glass-plus"></i></div>
+          </div>
+        </div>
+        <p class="text-center mt-32" style="font-size:0.85rem;color:var(--gris-medio);">
+          <i class="fas fa-info-circle"></i> Las imágenes del portafolio 2026 se cargarán en esta galería. Haz clic en cada imagen para ampliarla.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======== CTA ======== -->
+    <section style="background:linear-gradient(135deg, var(--azul-profundo) 0%, var(--azul-medio) 100%);padding:72px 0;text-align:center;">
+      <div class="container">
+        <span class="section-label" style="color:var(--cyan-acento);">¿Su entidad es el próximo caso de éxito?</span>
+        <h2 style="color:var(--blanco);margin-bottom:16px;">Trabajemos juntos en su proyecto documental</h2>
+        <p style="color:rgba(255,255,255,0.75);margin-bottom:36px;font-size:1.05rem;">Cuéntenos su desafío y le presentaremos una solución a la medida de sus necesidades y normatividad.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+          <a href="contacto.html" class="btn btn-primary">Solicitar cotización <i class="fas fa-arrow-right"></i></a>
+          <a href="servicios.html" class="btn btn-secondary">Ver nuestros servicios</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">EGS</div>
+            <div class="logo-text">
+              <span class="logo-name">EGS Soluciones Integrales</span>
+              <span class="logo-sub">Gestión Documental</span>
+            </div>
+          </a>
+          <p>Firma consultora especializada en gestión documental para entidades públicas y privadas de Colombia. Más de 10 años transformando la información en eficiencia.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegación</h5>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="acerca-de.html">Acerca de</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="contacto.html">Contáctanos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Servicios</h5>
+          <ul>
+            <li><a href="servicios.html#digitalizacion">Digitalización</a></li>
+            <li><a href="servicios.html#custodia">Custodia de Archivos</a></li>
+            <li><a href="servicios.html#nebula">Nebula Vault</a></li>
+            <li><a href="servicios.html#medios">Medios Magnéticos</a></li>
+            <li><a href="servicios.html#logistica">Logística Documental</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+573002057325">300 205 7325</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:info@egssas.com">info@egssas.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-location-dot"></i>
+            <span>Bogotá D.C., Colombia</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/573002057325" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 EGS Soluciones Integrales SAS. Todos los derechos reservados.</span>
+        <a href="#">Política de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/573002057325" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="wa-tooltip">¿Quieres chatear con nosotros?</span>
+  </a>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiénes Somos | EGS Soluciones Integrales en Gestión Documental</title>
+  <meta name="description" content="Somos una firma colombiana especializada en gestión documental. Conozca nuestra misión, visión y el equipo que transforma la información en eficiencia.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* MISIÓN / VISIÓN */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .mv-card {
+      border-radius: var(--radio-card);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mv-card-mision {
+      background: linear-gradient(135deg, var(--azul-profundo), var(--azul-medio));
+      color: var(--blanco);
+    }
+    .mv-card-vision {
+      background: var(--gris-claro);
+      border: 1px solid #E0E7F0;
+    }
+    .mv-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+    .mv-card-mision .mv-card-icon { color: var(--cyan-acento); }
+    .mv-card-vision  .mv-card-icon { color: var(--azul-medio); }
+    .mv-card h3 { margin-bottom: 14px; font-size: 1.3rem; }
+    .mv-card-mision h3 { color: var(--blanco); }
+    .mv-card-vision  h3 { color: var(--azul-profundo); }
+    .mv-card p { font-size: 0.95rem; line-height: 1.75; }
+    .mv-card-mision p { color: rgba(255,255,255,0.82); }
+
+    /* POR QUÉ ELEGIRNOS */
+    .why-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 28px;
+      background: var(--blanco);
+      border-radius: var(--radio-card);
+      box-shadow: var(--sombra-card);
+      transition: var(--transicion);
+      border: 1px solid rgba(13,43,94,0.06);
+    }
+    .why-item:hover { transform: translateY(-3px); box-shadow: var(--sombra-hover); }
+    .why-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--cyan-acento);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 44px;
+    }
+    .why-item h4 { color: var(--azul-profundo); margin-bottom: 6px; }
+    .why-item p  { font-size: 0.88rem; color: var(--gris-oscuro); margin: 0; }
+
+    /* VALORES */
+    .value-card {
+      background: var(--blanco);
+      border-radius: var(--radio-card);
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: var(--sombra-card);
+      border: 1px solid rgba(13,43,94,0.06);
+      transition: var(--transicion);
+    }
+    .value-card:hover { transform: translateY(-4px); box-shadow: var(--sombra-hover); }
+    .value-icon {
+      width: 60px; height: 60px;
+      background: var(--cyan-claro);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--cyan-acento);
+      margin: 0 auto 16px;
+    }
+    .value-card h4 { color: var(--azul-profundo); margin-bottom: 8px; }
+    .value-card p  { font-size: 0.85rem; color: var(--gris-oscuro); margin: 0; }
+
+    /* ALIADO TECNOLÓGICO */
+    .aliado-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .aliado-logo-box {
+      background: linear-gradient(135deg, var(--azul-profundo), #1e5aad);
+      border-radius: 16px;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+    }
+    .aliado-logo-box i { font-size: 3rem; color: var(--cyan-acento); }
+    .aliado-logo-box .aliado-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--blanco);
+    }
+    .aliado-logo-box .aliado-sub { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .aliado-features { display: flex; flex-direction: column; gap: 16px; }
+    .aliado-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--blanco);
+      border-radius: 10px;
+      box-shadow: var(--sombra-card);
+      border: 1px solid rgba(13,43,94,0.06);
+    }
+    .aliado-feature i { color: var(--cyan-acento); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+    .aliado-feature h4 { color: var(--azul-profundo); margin-bottom: 4px; font-size: 0.95rem; }
+    .aliado-feature p  { font-size: 0.84rem; color: var(--gris-oscuro); margin: 0; }
+
+    /* EQUIPO BANNER */
+    .team-banner {
+      background: linear-gradient(135deg, var(--azul-profundo) 0%, var(--azul-medio) 100%);
+      border-radius: 16px;
+      padding: 52px 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+    .team-banner h2 { color: var(--blanco); margin-bottom: 12px; }
+    .team-banner p  { color: rgba(255,255,255,0.75); max-width: 520px; }
+
+    @media (max-width: 768px) {
+      .mv-grid       { grid-template-columns: 1fr; }
+      .aliado-block  { grid-template-columns: 1fr; }
+      .team-banner   { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">EGS</div>
+        <div class="logo-text">
+          <span class="logo-name">EGS Soluciones Integrales</span>
+          <span class="logo-sub">Gestión Documental</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="acerca-de.html">Acerca de</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="contacto.html" class="nav-cta">Contáctanos</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======== HERO ======== -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Ruta">
+          <a href="index.html">Inicio</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>Acerca de</span>
+        </nav>
+        <span class="section-label">Quiénes somos</span>
+        <h1>Especialistas en gestión<br>documental desde el primer día</h1>
+        <p>Una firma colombiana con experiencia comprobada, equipo multidisciplinario y tecnología propia al servicio de sus documentos.</p>
+      </div>
+    </section>
+
+    <!-- ======== MISIÓN Y VISIÓN ======== -->
+    <section>
+      <div class="container">
+        <div class="text-center mb-40">
+          <span class="section-label">Nuestra razón de ser</span>
+          <h2 class="section-title">Misión y Visión</h2>
+        </div>
+        <div class="mv-grid">
+          <div class="mv-card mv-card-mision reveal">
+            <div class="mv-card-icon"><i class="fas fa-bullseye"></i></div>
+            <h3>Misión</h3>
+            <p>En EGS Soluciones Integrales SAS ofrecemos servicios especializados en gestión documental, dirigidos a entidades del sector público y privado, garantizando el cumplimiento normativo, la transparencia, la trazabilidad de la información y la conservación del patrimonio documental. Nuestro compromiso es apoyar la eficiencia administrativa mediante procesos seguros, confiables y orientados a la mejora continua.</p>
+          </div>
+          <div class="mv-card mv-card-vision reveal reveal-delay-1">
+            <div class="mv-card-icon"><i class="fas fa-eye"></i></div>
+            <h3>Visión</h3>
+            <p>Liderar la transformación material y digital en la gestión documental, brindando soluciones innovadoras para la eficiencia y accesibilidad de la información. De igual manera, ser referencia en soluciones de gestión, garantizando la preservación del patrimonio documental de las organizaciones colombianas a nivel nacional.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== POR QUÉ ELEGIRNOS ======== -->
+    <section class="bg-gris">
+      <div class="container">
+        <div class="text-center mb-40">
+          <span class="section-label">Nuestra propuesta de valor</span>
+          <h2 class="section-title">¿Por qué elegir a EGS?</h2>
+          <p class="section-intro" style="margin:0 auto;">Nuestros procesos se han caracterizado por contar con altos estándares de calidad e implementar la normatividad vigente, tanto técnica como administrativa.</p>
+        </div>
+        <div class="grid-2">
+          <div class="why-item reveal">
+            <div class="why-num">01</div>
+            <div>
+              <h4>Equipo multidisciplinario especializado</h4>
+              <p>Contamos con profesionales y técnicos con amplia experiencia que aportan sus conocimientos desde la presentación de la oferta hasta la entrega del producto final, a diferencia de otras empresas del sector.</p>
+            </div>
+          </div>
+          <div class="why-item reveal reveal-delay-1">
+            <div class="why-num">02</div>
+            <div>
+              <h4>Cumplimiento normativo garantizado</h4>
+              <p>Todos nuestros procedimientos dan cumplimiento a lo ordenado por el Archivo General de la Nación (AGN) y los más altos estándares técnicos y administrativos vigentes en Colombia.</p>
+            </div>
+          </div>
+          <div class="why-item reveal reveal-delay-2">
+            <div class="why-num">03</div>
+            <div>
+              <h4>Tecnología propia diferenciadora</h4>
+              <p>Desarrollamos Nebula Vault, nuestro software de preservación digital OAIS con acceso 24/7, una solución que muy pocas empresas del sector pueden ofrecer en el mercado colombiano.</p>
+            </div>
+          </div>
+          <div class="why-item reveal reveal-delay-3">
+            <div class="why-num">04</div>
+            <div>
+              <h4>Cobertura nacional y experiencia institucional</h4>
+              <p>Hemos ejecutado proyectos de alta complejidad para entidades del orden nacional como la Contraloría General de la República y el Acueducto de Bogotá, así como alcaldías municipales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== VALORES ======== -->
+    <section>
+      <div class="container">
+        <div class="text-center mb-40">
+          <span class="section-label">Nuestros valores</span>
+          <h2 class="section-title">Los principios que nos guían</h2>
+        </div>
+        <div class="grid-4">
+          <div class="value-card reveal">
+            <div class="value-icon"><i class="fas fa-shield-check"></i></div>
+            <h4>Confiabilidad</h4>
+            <p>Garantizamos la seguridad e integridad de la información de nuestros clientes en cada proceso.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-1">
+            <div class="value-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+            <h4>Transparencia</h4>
+            <p>Trazabilidad total en cada etapa del ciclo documental, con reportes claros y verificables.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-2">
+            <div class="value-icon"><i class="fas fa-rotate"></i></div>
+            <h4>Mejora continua</h4>
+            <p>Actualizamos constantemente nuestros métodos y tecnologías para ofrecer el mejor servicio posible.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-3">
+            <div class="value-icon"><i class="fas fa-handshake"></i></div>
+            <h4>Compromiso</h4>
+            <p>Nos involucramos profundamente con las necesidades de cada cliente para entregar resultados superiores.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ALIADO TECNOLÓGICO ======== -->
+    <section class="bg-gris">
+      <div class="container">
+        <div class="text-center mb-40">
+          <span class="section-label">Respaldo tecnológico</span>
+          <h2 class="section-title">Nuestro aliado estratégico</h2>
+        </div>
+        <div class="aliado-block">
+          <div class="aliado-logo-box reveal">
+            <i class="fas fa-microchip"></i>
+            <div class="aliado-name">Céntrica Soluciones<br>Innovadoras</div>
+            <div class="aliado-sub">Aliado tecnológico oficial de EGS</div>
+          </div>
+          <div class="aliado-features reveal reveal-delay-1">
+            <p style="margin-bottom:24px;font-size:1rem;">La alianza con <strong>Céntrica Soluciones Innovadoras</strong> le otorga a EGS un respaldo tecnológico de primer nivel, que se materializa en soluciones digitales robustas, seguras y alineadas con estándares internacionales.</p>
+            <div class="aliado-feature">
+              <i class="fas fa-cloud-arrow-up"></i>
+              <div>
+                <h4>Nebula Vault — Software OAIS</h4>
+                <p>Plataforma de preservación digital desarrollada bajo el estándar Open Archival Information System, con acceso 24/7 y cumplimiento de normatividad internacional de ciberseguridad.</p>
+              </div>
+            </div>
+            <div class="aliado-feature">
+              <i class="fas fa-lock"></i>
+              <div>
+                <h4>Ciberseguridad y normatividad internacional</h4>
+                <p>Todos los sistemas cumplen con estándares de ciberseguridad actualizados, garantizando la protección de la información institucional de nuestros clientes.</p>
+              </div>
+            </div>
+            <div class="aliado-feature">
+              <i class="fas fa-gears"></i>
+              <div>
+                <h4>Integración con sistemas existentes</h4>
+                <p>Nuestras soluciones se adaptan a la infraestructura tecnológica de cada entidad, facilitando una adopción sin fricciones.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== EQUIPO / CTA ======== -->
+    <section>
+      <div class="container">
+        <div class="team-banner reveal">
+          <div>
+            <h2>Trabajamos con las entidades más exigentes del país</h2>
+            <p>Desde fondos acumulados de nivel nacional hasta historias laborales de grandes empresas, EGS tiene la experiencia, el equipo y la tecnología para cada desafío documental.</p>
+          </div>
+          <div>
+            <a href="contacto.html" class="btn btn-primary" style="white-space:nowrap;">
+              Hablar con un experto <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">EGS</div>
+            <div class="logo-text">
+              <span class="logo-name">EGS Soluciones Integrales</span>
+              <span class="logo-sub">Gestión Documental</span>
+            </div>
+          </a>
+          <p>Firma consultora especializada en gestión documental para entidades públicas y privadas de Colombia. Más de 10 años transformando la información en eficiencia.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegación</h5>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="acerca-de.html">Acerca de</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="contacto.html">Contáctanos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Servicios</h5>
+          <ul>
+            <li><a href="servicios.html#digitalizacion">Digitalización</a></li>
+            <li><a href="servicios.html#custodia">Custodia de Archivos</a></li>
+            <li><a href="servicios.html#nebula">Nebula Vault</a></li>
+            <li><a href="servicios.html#medios">Medios Magnéticos</a></li>
+            <li><a href="servicios.html#logistica">Logística Documental</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+573002057325">300 205 7325</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:info@egssas.com">info@egssas.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-location-dot"></i>
+            <span>Bogotá D.C., Colombia</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/573002057325" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 EGS Soluciones Integrales SAS. Todos los derechos reservados.</span>
+        <a href="#">Política de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/573002057325" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="wa-tooltip">¿Quieres chatear con nosotros?</span>
+  </a>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
