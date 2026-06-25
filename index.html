@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EGS Soluciones Integrales | Gestión Documental Especializada en Colombia</title>
+  <meta name="description" content="Transformamos la gestión documental en eficiencia y control. Ofrecemos digitalización, custodia, y software Nebula Vault para entidades públicas y privadas en Colombia.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* HERO INDEX */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--azul-profundo) 0%, #173f8a 60%, var(--azul-medio) 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,168,204,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0; right: 0;
+      height: 70px;
+      background: var(--blanco);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,168,204,0.18);
+      border: 1px solid rgba(0,168,204,0.4);
+      color: #7de8ff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      color: var(--blanco);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--cyan-acento); }
+    .hero-desc {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+      max-width: 560px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-graphic {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 480px;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--azul-profundo);
+      padding: 40px 0;
+      margin-top: -2px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      text-align: center;
+    }
+    .stat-item { padding: 16px; }
+    .stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--cyan-acento);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+    }
+
+    /* SERVICIOS DESTACADOS */
+    .service-card-home {
+      background: var(--blanco);
+      border-radius: var(--radio-card);
+      box-shadow: var(--sombra-card);
+      padding: 32px;
+      border: 1px solid rgba(13,43,94,0.06);
+      border-top: 3px solid var(--cyan-acento);
+      transition: var(--transicion);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .service-card-home:hover { transform: translateY(-5px); box-shadow: var(--sombra-hover); }
+    .service-card-home h3 { margin: 16px 0 10px; color: var(--azul-profundo); }
+    .service-card-home p  { font-size: 0.9rem; color: var(--gris-oscuro); margin-bottom: 18px; }
+    .service-card-home .link-arrow {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--cyan-acento);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* SOBRE EGS */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-visual {
+      background: linear-gradient(135deg, var(--azul-profundo), var(--azul-medio));
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-visual-icon {
+      font-size: 6rem;
+      color: rgba(255,255,255,0.15);
+    }
+    .about-visual-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 14px 18px;
+      color: var(--blanco);
+    }
+    .about-visual-badge .number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--cyan-acento);
+    }
+    .about-visual-badge p { color: rgba(255,255,255,0.75); font-size: 0.82rem; margin: 0; }
+
+    /* CLIENTES */
+    .clients-section { padding: 60px 0; }
+    .client-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .client-logo-card {
+      background: var(--blanco);
+      border: 1px solid #E0E7F0;
+      border-radius: 10px;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: var(--transicion);
+    }
+    .client-logo-card:hover { box-shadow: var(--sombra-card); transform: translateY(-2px); }
+    .client-logo-card .client-icon {
+      width: 48px; height: 48px;
+      background: var(--azul-profundo);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blanco);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .client-logo-card .client-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--azul-profundo);
+      line-height: 1.3;
+    }
+    .client-logo-card .client-type {
+      font-size: 0.75rem;
+      color: var(--gris-medio);
+    }
+
+    /* TESTIMONIOS */
+    .testimonial-card {
+      background: var(--blanco);
+      border-radius: var(--radio-card);
+      box-shadow: var(--sombra-card);
+      padding: 36px;
+      border-left: 4px solid var(--cyan-acento);
+    }
+    .testimonial-quote {
+      font-size: 2.5rem;
+      color: var(--cyan-acento);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .testimonial-card p { font-size: 0.95rem; color: var(--gris-oscuro); font-style: italic; margin-bottom: 20px; }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 44px; height: 44px;
+      background: var(--azul-medio);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blanco);
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .author-info .name { font-weight: 700; color: var(--azul-profundo); font-size: 0.9rem; }
+    .author-info .org  { font-size: 0.8rem; color: var(--gris-medio); }
+
+    /* CTA FINAL */
+    .cta-final {
+      background: linear-gradient(135deg, var(--azul-profundo) 0%, var(--azul-medio) 100%);
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .cta-final h2 { color: var(--blanco); margin-bottom: 16px; position: relative; }
+    .cta-final p  { color: rgba(255,255,255,0.75); font-size: 1.1rem; margin-bottom: 36px; position: relative; }
+    .cta-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--blanco);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      text-decoration: none;
+      transition: var(--transicion);
+    }
+    .cta-phone:hover { background: rgba(255,255,255,0.2); }
+    .cta-final .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    @media (max-width: 768px) {
+      .about-split { grid-template-columns: 1fr; }
+      .stats-grid  { grid-template-columns: repeat(2, 1fr); }
+      .hero-graphic { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">EGS</div>
+        <div class="logo-text">
+          <span class="logo-name">EGS Soluciones Integrales</span>
+          <span class="logo-sub">Gestión Documental</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="acerca-de.html">Acerca de</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="contacto.html" class="nav-cta">Contáctanos</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======== HERO ======== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fas fa-shield-halved"></i>
+            Empresa certificada · Bogotá, Colombia
+          </div>
+          <h1>Transformamos la gestión documental en <span>eficiencia y control</span></h1>
+          <p class="hero-desc">Somos especialistas en organización, digitalización, custodia de archivos y tecnología documental para entidades del sector público y privado.</p>
+          <div class="hero-actions">
+            <a href="contacto.html" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> Solicitar cotización
+            </a>
+            <a href="servicios.html" class="btn btn-secondary">
+              <i class="fas fa-folder-open"></i> Ver servicios
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== STATS ======== -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" data-count="27" data-suffix="M+">0</div>
+            <div class="stat-label">Imágenes digitalizadas</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="96000" data-suffix="+">0</div>
+            <div class="stat-label">Cajas en custodia</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="3" data-suffix="">0</div>
+            <div class="stat-label">Contratos con el Acueducto de Bogotá</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="8" data-suffix="+">0</div>
+            <div class="stat-label">Servicios especializados</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== SERVICIOS DESTACADOS ======== -->
+    <section>
+      <div class="container">
+        <div class="text-center mb-40">
+          <span class="section-label">Nuestros servicios</span>
+          <h2 class="section-title">Soluciones documentales para su organización</h2>
+          <p class="section-intro" style="margin:0 auto;">Ofrecemos un portafolio completo que cubre todo el ciclo de vida de la información institucional.</p>
+        </div>
+        <div class="grid-3">
+          <a href="servicios.html#digitalizacion" class="service-card-home reveal">
+            <div class="card-icon"><i class="fas fa-scanner-image"></i></div>
+            <h3>Digitalización de Documentos</h3>
+            <p>Acceda a su información 24/7 reduciendo riesgos de pérdida y deterioro. Cumplimiento de los más altos estándares técnicos.</p>
+            <span class="link-arrow">Ver más <i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="servicios.html#custodia" class="service-card-home reveal reveal-delay-1">
+            <div class="card-icon"><i class="fas fa-warehouse"></i></div>
+            <h3>Custodia y Administración de Archivos</h3>
+            <p>Almacenamiento seguro de archivos físicos con control de inventario, préstamo y consulta eficientes.</p>
+            <span class="link-arrow">Ver más <i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="servicios.html#nebula" class="service-card-home reveal reveal-delay-2">
+            <div class="card-icon" style="background:rgba(13,43,94,0.08);"><i class="fas fa-cloud-arrow-up" style="color:var(--azul-medio);"></i></div>
+            <h3>Nebula Vault — Bodega Virtual</h3>
+            <p>Software OAIS de preservación digital con acceso 24/7. Nuestro diferenciador tecnológico en el mercado colombiano.</p>
+            <span class="link-arrow">Ver más <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+        <div class="text-center mt-32">
+          <a href="servicios.html" class="btn btn-outline">Ver todos los servicios <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SOBRE EGS ======== -->
+    <section class="bg-gris">
+      <div class="container">
+        <div class="about-split">
+          <div class="about-visual reveal">
+            <i class="fas fa-folder-tree about-visual-icon"></i>
+            <div class="about-visual-badge">
+              <div class="number">+10</div>
+              <p>Años de experiencia en gestión documental</p>
+            </div>
+          </div>
+          <div class="reveal reveal-delay-1">
+            <span class="section-label">Quiénes somos</span>
+            <h2 class="section-title">Una firma especializada en el ciclo completo de la información</h2>
+            <p style="margin-bottom:20px;">EGS Soluciones Integrales SAS es una firma consultora que presta servicios de gestión documental vinculando diferentes áreas profesionales técnicas, adaptándose a las necesidades de sus clientes con la mayor tecnología disponible.</p>
+            <p style="margin-bottom:32px;">Nuestro compromiso es apoyar la eficiencia administrativa mediante procesos seguros, confiables y orientados a la mejora continua, garantizando el cumplimiento normativo y la preservación del patrimonio documental.</p>
+            <a href="acerca-de.html" class="btn btn-primary">Conoce más sobre EGS <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== CLIENTES ======== -->
+    <section class="clients-section">
+      <div class="container">
+        <div class="text-center mb-40">
+          <span class="section-label">Clientes de alto nivel</span>
+          <h2 class="section-title">Entidades que confían en EGS</h2>
+          <p class="section-intro" style="margin:0 auto;">Hemos ejecutado proyectos de gran escala para algunas de las instituciones más importantes del país.</p>
+        </div>
+        <div class="client-logos">
+          <div class="client-logo-card reveal">
+            <div class="client-icon"><i class="fas fa-landmark"></i></div>
+            <div>
+              <div class="client-name">Contraloría General<br>de la República</div>
+              <div class="client-type">Entidad pública nacional</div>
+            </div>
+          </div>
+          <div class="client-logo-card reveal reveal-delay-1">
+            <div class="client-icon"><i class="fas fa-droplet"></i></div>
+            <div>
+              <div class="client-name">Acueducto de Bogotá<br>(EAAB)</div>
+              <div class="client-type">Empresa de servicios públicos</div>
+            </div>
+          </div>
+          <div class="client-logo-card reveal reveal-delay-2">
+            <div class="client-icon"><i class="fas fa-city"></i></div>
+            <div>
+              <div class="client-name">Alcaldías de Envigado,<br>La Estrella y Segovia</div>
+              <div class="client-type">Entidades municipales</div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-32">
+          <a href="proyectos.html" class="btn btn-outline">Ver casos de éxito <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== TESTIMONIOS ======== -->
+    <section class="bg-gris">
+      <div class="container">
+        <div class="text-center mb-40">
+          <span class="section-label">Lo que dicen nuestros clientes</span>
+          <h2 class="section-title">Satisfacción comprobada</h2>
+        </div>
+        <div class="grid-2">
+          <div class="testimonial-card reveal">
+            <div class="testimonial-quote">&ldquo;</div>
+            <p>EGS demostró un alto nivel de experticia y compromiso en la organización y digitalización de nuestros fondos acumulados. Los resultados superaron nuestras expectativas tanto en calidad como en cumplimiento de los plazos establecidos.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">CG</div>
+              <div class="author-info">
+                <div class="name">Contraloría General de la República</div>
+                <div class="org">Entidad de control fiscal del Estado colombiano</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal reveal-delay-1">
+            <div class="testimonial-quote">&ldquo;</div>
+            <p>La gestión de EGS en la custodia y administración de nuestros archivos ha sido ejemplar. Su capacidad para manejar grandes volúmenes de documentación con precisión y seguridad es un activo invaluable para nuestra organización.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">AB</div>
+              <div class="author-info">
+                <div class="name">Empresa de Acueducto y Alcantarillado de Bogotá</div>
+                <div class="org">EAAB — Empresa de servicios públicos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== CTA FINAL ======== -->
+    <section class="cta-final">
+      <div class="container">
+        <span class="section-label" style="color:var(--cyan-acento);">Impulsa tu transformación</span>
+        <h2>Impulsa la transformación documental<br>de tu entidad</h2>
+        <p>Contáctenos hoy y descubra cómo podemos optimizar la gestión de su información institucional.</p>
+        <a href="tel:+573002057325" class="cta-phone">
+          <i class="fas fa-phone"></i> 300 205 7325
+        </a>
+        <div class="cta-actions">
+          <a href="contacto.html" class="btn btn-primary">Solicitar cotización <i class="fas fa-arrow-right"></i></a>
+          <a href="servicios.html" class="btn btn-secondary">Explorar servicios</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">EGS</div>
+            <div class="logo-text">
+              <span class="logo-name">EGS Soluciones Integrales</span>
+              <span class="logo-sub">Gestión Documental</span>
+            </div>
+          </a>
+          <p>Firma consultora especializada en gestión documental para entidades públicas y privadas de Colombia. Más de 10 años transformando la información en eficiencia.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegación</h5>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="acerca-de.html">Acerca de</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="contacto.html">Contáctanos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Servicios</h5>
+          <ul>
+            <li><a href="servicios.html#digitalizacion">Digitalización</a></li>
+            <li><a href="servicios.html#custodia">Custodia de Archivos</a></li>
+            <li><a href="servicios.html#nebula">Nebula Vault</a></li>
+            <li><a href="servicios.html#medios">Medios Magnéticos</a></li>
+            <li><a href="servicios.html#logistica">Logística Documental</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+573002057325">300 205 7325</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:info@egssas.com">info@egssas.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-location-dot"></i>
+            <span>Bogotá D.C., Colombia</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/573002057325" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 EGS Soluciones Integrales SAS. Todos los derechos reservados.</span>
+        <a href="#">Política de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/573002057325" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="wa-tooltip">¿Quieres chatear con nosotros?</span>
+  </a>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
