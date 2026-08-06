@@ -109,33 +109,41 @@ section { padding: 80px 0; }
   text-decoration: none;
 }
 
-/* Contenedor imagen logo */
 .logo-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   background: none;
+  /* Pastilla blanca detrás del logo cuando el header es transparente */
+  background: rgba(255,255,255,0.92);
+  border-radius: 10px;
+  padding: 6px 14px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
+/* Cuando el header tiene fondo blanco, la pastilla desaparece */
+#header.scrolled .logo-icon {
+  background: transparent;
+  padding: 0;
+}
+
 .logo-img {
-  height: 48px;
+  height: 44px;
   width: auto;
   display: block;
   object-fit: contain;
-  /* Header transparente: logo en blanco */
-  filter: brightness(0) invert(1);
-  transition: filter 0.3s ease;
-}
-/* Header con fondo blanco: logo a color natural */
-#header.scrolled .logo-img {
+  /* Sin filtros — el logo mantiene sus colores azules originales */
   filter: none;
 }
-/* Footer: fondo oscuro, logo en blanco */
-footer .logo-img {
-  filter: brightness(0) invert(1);
+
+/* Footer: fondo oscuro → pastilla blanca igual que header transparente */
+footer .logo-icon {
+  background: rgba(255,255,255,0.92);
+  border-radius: 10px;
+  padding: 6px 14px;
 }
 
-/* Fallback texto */
+/* Fallback texto (no se usa si la imagen carga) */
 .logo-text {
   display: flex;
   flex-direction: column;
