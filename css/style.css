@@ -106,22 +106,36 @@ section { padding: 80px 0; }
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
 }
+
+/* Contenedor imagen logo */
 .logo-icon {
-  width: 42px;
-  height: 42px;
-  background: linear-gradient(135deg, var(--azul-medio), var(--cyan-acento));
-  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  font-size: 1.1rem;
-  color: var(--blanco);
-  letter-spacing: -1px;
   flex-shrink: 0;
+  background: none;
 }
+.logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  /* Header transparente: logo en blanco */
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+/* Header con fondo blanco: logo a color natural */
+#header.scrolled .logo-img {
+  filter: none;
+}
+/* Footer: fondo oscuro, logo en blanco */
+footer .logo-img {
+  filter: brightness(0) invert(1);
+}
+
+/* Fallback texto */
 .logo-text {
   display: flex;
   flex-direction: column;
